@@ -1,0 +1,7 @@
+com_nornir/inventory/
+sample_uc.py
+com_nornir/backups/
+backups/
+nornir.log
+com_nornir/nornir.log
+requirements.txt

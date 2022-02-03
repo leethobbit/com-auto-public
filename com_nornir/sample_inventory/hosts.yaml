@@ -1,0 +1,50 @@
+# hosts.yaml
+---
+# This is a sanitized sample so you can see one way to set the inventory up.
+# You can get MUCH more granular and in depth with this so I highly recommend looking at other examples, too.
+#
+# Cisco Catalyst Switches
+
+DXG-1-IDF1-SW1:
+  hostname: 192.168.1.25
+  port: 22
+  platform: ios
+  groups:
+    - cisco_switches
+  connection_options:
+    napalm:
+      extras:
+        optional_args:
+          secret: some_secret
+
+# Cisco Nexus Switches
+
+DXG-2-DC-R1-N3K1:
+  hostname: 192.168.1.30
+  port: 22
+  platform: nxos
+  groups:
+    - nexus_switches
+  connection_options:
+    napalm:
+      extras:
+        optional_args:
+          secret: some_secret
+
+# Cisco Routers
+
+DXG-1-IDF1-RTR1:
+  hostname: 192.168.2.1
+  port: 22
+  platform: ios
+  groups:
+    - cisco_routers
+  connection_options:
+    napalm:
+      extras:
+        optional_args:
+          secret: some_secret
+
+# Cisco Unified Communications
+
+# HP Switches

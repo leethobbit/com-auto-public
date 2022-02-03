@@ -1,0 +1,8 @@
+# groups.yaml
+---
+cisco_routers: {}
+cisco_switches: {}
+nexus_switches: {}
+palo_alto: {}
+broken: {}
+test: {}

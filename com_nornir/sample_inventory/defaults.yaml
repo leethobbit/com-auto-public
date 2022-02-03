@@ -1,0 +1,4 @@
+# defaults.yaml
+---
+username: some_admin
+password: some_password

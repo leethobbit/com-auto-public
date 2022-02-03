@@ -1,5 +1,3 @@
-# com-network-repo
-
 # The CoM Network Automation Repo
 
 This is a series of network automation scripts written in [Python](https://www.python.org/) which lean heavily on the [Nornir](https://github.com/nornir-automation/nornir) framework to automate some basic tasks.

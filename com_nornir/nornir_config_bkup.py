@@ -50,7 +50,7 @@ def get_netmiko_backups():
         )
 
 def main():
-    logging.basicConfig(level=logging.INFO,format='%(asctime)s- %(levelname)s- %(message)s')
+    logging.basicConfig(level=logging.INFO,format='%(asctime)s- %(levelname)s- %(message)s',filename='config_bkup.log')
     logging.info('Starting program.')
     create_backups_dir()
     get_netmiko_backups()

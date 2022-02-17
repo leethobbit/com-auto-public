@@ -53,7 +53,7 @@ def create_new_pswd():
 def main():
     # This enables logging of INFO level events.  This will be chatty but not nearly as much as DEBUG mode would.
     logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s - %(levelname)s - %(message)s')
+                        format='%(asctime)s - %(levelname)s - %(message)s', filename='pswd_reset.log')
     create_new_pswd()
 
 if __name__ == "__main__":

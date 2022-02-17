@@ -70,7 +70,7 @@ def find_mac_addr(mac_addr, mac_addr_mod):
 
 def main():
     logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s- %(levelname)s- %(message)s')
+                        format='%(asctime)s- %(levelname)s- %(message)s', filename='mac_finder_v2.log')
     get_mac_addr()
 
 

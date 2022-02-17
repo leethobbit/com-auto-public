@@ -1,6 +1,6 @@
 # The City of Mentor Network Device Password Changer
 # Written by Dan King
-# Last update: 06/03/2021
+# Last update: 02/17/2022
 #
 # This script can be used to change the password of whichever user account is entered when prompted.
 # It also automatically updates the 'defaults.yaml' file.

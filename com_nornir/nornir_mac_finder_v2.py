@@ -1,6 +1,6 @@
 # The City of Mentor MAC Address Finder
 # Written by Dan King
-# Last update: 02/15/2022
+# Last update: 02/17/2022
 # 
 # TODO: Currently, MAC addresses must be entered in the form of 0000.0000.0000 (or any form Cisco will read, but the preference is the format shown here.)
 # Must implement code to change any format of MAC address to 0000.0000.0000 before sending to devices.

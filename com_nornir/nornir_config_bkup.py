@@ -1,6 +1,6 @@
 # The City of Mentor Cisco Config Backup Utility
 # Written by Dan King
-# Last update: 02/17/2022
+# Last update: 02/18/2022
 
 import os
 import logging
@@ -23,20 +23,22 @@ nr = InitNornir(
 # test = nr.filter(F(groups__contains="test"))
 
 def create_backups_dir():
+    """Creates a backup directory using today's today, if one doesn't exist."""
     logging.info('Checking if backup directory exists.')
     if not os.path.exists(BACKUP_DIR):
         logging.info('Creating backup directory.')
         os.mkdir(BACKUP_DIR)
 
 def save_config_to_file(method, hostname, config):
+    """Takes the config and writes it to a file, using hostname and date to name the file."""
     filename = f'{hostname}-{method}-{time}.cfg'
     with open(os.path.join(BACKUP_DIR, filename), "w") as f:
         f.write(config)
     logging.info(f'{str(hostname)} backup created successfully.')
 
 def get_netmiko_backups():
-    # This method grabs the contents of 'show run' from each device in hosts.yaml and then pipes it to the save_config_to_file method
-    logging.info('Now grabbing config files.')
+    """Grabs the contents of 'show run' from each device in hosts.yaml and then pipes it to the save_config_to_file() function"""
+    logging.info('Now collecting configuration files.')
     backup_results = nr.run(
         task=netmiko_send_command,
         command_string="show run"
@@ -50,6 +52,7 @@ def get_netmiko_backups():
         )
 
 def main():
+    """Sets logging parameters, then creates a backup folder, and finally gets the configurations and saves them into the backup folder."""
     logging.basicConfig(level=logging.INFO,format='%(asctime)s- %(levelname)s- %(message)s',filename='config_bkup.log')
     logging.info('Starting program.')
     create_backups_dir()

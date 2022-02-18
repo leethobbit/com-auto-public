@@ -1,6 +1,6 @@
 # The City of Mentor Network Device Password Changer
 # Written by Dan King
-# Last update: 02/17/2022
+# Last update: 02/18/2022
 #
 # This script can be used to change the password of whichever user account is entered when prompted.
 # It also automatically updates the 'defaults.yaml' file.
@@ -20,7 +20,7 @@ nr = InitNornir(
 pswd_test = nr.filter(F(groups__contains="pswd_test"))
 
 def update_defaults_pswd(new_pswd):
-    # This function updates the defaults.yaml file with the new password
+    """Updates the defaults.yaml file with the new password."""
     yaml = YAML()
     yaml.explicit_start = True
     yaml.preserve_quotes = True
@@ -37,13 +37,14 @@ def update_defaults_pswd(new_pswd):
     logging.info(f'Password has been updated in the defaults.yaml file!')
 
 def send_new_pswd_to_devices(username,new_pswd):
-    # This function sends new password to all network devices (or a subset if using a group filter)
+    """This function sends new password to all network devices (or a subset if using a group filter)"""
     pswd_test.run(task=netmiko_send_config, config_commands=f'username {username} privilege 15 password {new_pswd}')
     logging.info(f'Password has been successfully changed for user {username}!')
     # TODO: Should do some sort of verification once password is changed.
     update_defaults_pswd(new_pswd)
 
 def create_new_pswd():
+    """Choose which account, and set new password for that account."""
     username = input("Please enter the username to modify: ")
     new_pswd = input("Please enter a new password: ")
     logging.info(f'The username you entered is: {username}')
@@ -51,7 +52,7 @@ def create_new_pswd():
     send_new_pswd_to_devices(username,new_pswd)
 
 def main():
-    # This enables logging of INFO level events.  This will be chatty but not nearly as much as DEBUG mode would.
+    """Logging is set here, and then create_new_pswd() is called."""
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(levelname)s - %(message)s', filename='pswd_reset.log')
     create_new_pswd()
